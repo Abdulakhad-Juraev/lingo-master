@@ -1,0 +1,92 @@
+{
+  "name": "yiisoft/yii2-app-advanced",
+  "description": "Yii 2 Advanced Project Template",
+  "keywords": [
+    "yii2",
+    "framework",
+    "advanced",
+    "project template"
+  ],
+  "homepage": "http://www.yiiframework.com/",
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "support": {
+    "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+    "forum": "http://www.yiiframework.com/forum/",
+    "wiki": "http://www.yiiframework.com/wiki/",
+    "irc": "irc://irc.freenode.net/yii",
+    "source": "https://github.com/yiisoft/yii2"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^8.2.0",
+    "ext-calendar": "*",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "arokettu/system-clock": "^2.0",
+    "asmoday74/yii2-ckeditor5": "*",
+    "bizley/jwt": "^4.0",
+    "gofuroov/yii2-mysql-dumper": "*",
+    "johnitvn/yii2-ajaxcrud": "*",
+    "kartik-v/yii2-bootstrap4-dropdown": "@dev",
+    "kartik-v/yii2-builder": "@dev",
+    "kartik-v/yii2-date-range": "^1.7",
+    "kartik-v/yii2-editable": "dev-master",
+    "kartik-v/yii2-field-range": "*",
+    "kartik-v/yii2-sortable-input": "dev-master",
+    "kartik-v/yii2-widget-colorinput": "dev-master",
+    "kartik-v/yii2-widget-datepicker": "dev-master",
+    "kartik-v/yii2-widget-depdrop": "^1.0",
+    "kartik-v/yii2-widget-fileinput": "dev-master",
+    "kartik-v/yii2-widgets": "dev-master",
+    "mihaildev/yii2-ckeditor": "*",
+    "mihaildev/yii2-elfinder": "*",
+    "mohorev/yii2-upload-behavior": "*",
+    "mrmuminov/yii2-playmobile-uz": "*",
+    "nesbot/carbon": "2.x-dev",
+    "odilov-sh/yii2-multilingual": "*",
+    "phpoffice/phpspreadsheet": "^2.1",
+    "wbraganca/yii2-dynamicform": "*",
+    "yiisoft/yii2": "~2.0.14",
+    "yiisoft/yii2-bootstrap": "~2.0.0",
+    "yiisoft/yii2-bootstrap4": "^2.0",
+    "yiisoft/yii2-httpclient": "^2.0",
+    "yiisoft/yii2-imagine": "^2.3",
+    "yiisoft/yii2-jui": "~2.0.0"
+  },
+  "require-dev": {
+    "yiisoft/yii2-debug": "~2.1.0",
+    "yiisoft/yii2-gii": "~2.1.0",
+    "symfony/var-dumper": "^5.1",
+    "yiisoft/yii2-faker": "~2.0.0"
+  },
+  "config": {
+    "process-timeout": 1800,
+    "fxp-asset": {
+      "enabled": false
+    },
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "platform-check": false,
+    "platform": {
+      "php": "8.2"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  },
+  "autoload": {
+    "files": [
+      "soft/functions/global_functions.php"
+    ]
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
+}

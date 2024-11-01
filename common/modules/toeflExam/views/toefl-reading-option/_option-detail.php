@@ -1,0 +1,24 @@
+<?php
+
+/** @var \common\modules\toeflExam\models\ToeflQuestion $model */
+
+
+$options = $model->toeflOptions;
+?>
+<div class="pr-2 pl-2">
+    <p class="info"><b>Options</b></p>
+    <table class="table table-striped table-sm">
+        <?php foreach ($options as $option): ?>
+
+            <tr>
+                <td style="width: 5%; text-align: center">
+                    <?= $option->isAnswerIcon ?>
+                </td>
+                <td>
+                    <?= Yii::$app->formatter->asRaw($option->text) ?>
+                </td>
+            </tr>
+
+        <?php endforeach; ?>
+    </table>
+</div>

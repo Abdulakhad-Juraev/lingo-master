@@ -1,0 +1,33 @@
+Options -Indexes
+IndexIgnore */*
+
+Options FollowSymLinks
+
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteEngine On
+
+RewriteRule ^api(/.+)?$ api/web/$1 [L,PT]
+RewriteRule ^api/(.+)?$ api/web/$1 [L,PT]
+
+RewriteRule ^admin(/.+)?$ backend/web/$1 [L,PT]
+RewriteRule ^admin/(.+)?$ backend/web/$1 [L,PT]
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin *
+</IfModule>
+
+#Images.
+#RewriteRule ^uploads/(.+)?$ yii2/frontend/web/uploads/$1 [L]
+#RewriteRule ^uploads(/.+)?$ yii2/frontend/web/uploads/$1 [L]
+RewriteRule ^template(/.+)?$ frontend/web/template/$1 [L]
+
+
+#RewriteRule ^(.+)?$ react/BasmalaTvBuild/build/$1
+RewriteRule ^(.+)?$ frontend/web/$1
+

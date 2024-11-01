@@ -1,0 +1,69 @@
+/*L-desktop*/
+
+@media (min-device-width:  1600px)
+{
+	
+}
+
+/*L-laptops*/
+@media only screen and (min-device-width: 1200px) and (max-device-width: 1440px)
+{
+	
+}
+
+/*laptops/tablets*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+{
+	
+	
+}
+
+
+/*tablets*/
+@media only screen and (min-device-width: 576px) and (max-device-width: 768px)
+{
+	.tab-100
+    {
+        width: 100%;
+    }
+    .dashboard::before
+    {
+        bottom: 0;
+        height: 50%;
+        top: auto;
+    }
+    .dashboard::after
+    {
+        bottom: 0;
+        height: 50%;
+        top: auto;
+    }
+}
+
+
+/*Smart phone*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 576px)
+{
+	.dashboard::before
+    {
+        bottom: 0;
+        height: 50%;
+        top: auto;
+    }
+    .dashboard::after
+    {
+        bottom: 0;
+        height: 50%;
+        top: auto;
+    }
+    .signup-heading h2
+    {
+        font-size: 35px;
+    }
+    .signup-heading p
+    {
+        font-size: 15px;
+    }
+}
+
+

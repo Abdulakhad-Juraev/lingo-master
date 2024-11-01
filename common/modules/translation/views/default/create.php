@@ -1,0 +1,1 @@
+<?php/* @var $this yii\web\View *//* @var $model common\modules\translation\models\SourceMessage */$this->title = Yii::t('site', 'Create a new');;$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Translations'), 'url' => ['index']];$this->params['breadcrumbs'][] = $this->title;?><?= $this->render('_form', [    'model' => $model,]) ?>

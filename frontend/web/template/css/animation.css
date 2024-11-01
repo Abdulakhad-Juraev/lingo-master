@@ -1,0 +1,57 @@
+.pop
+{
+    animation: pop 0.2s linear forwards;
+    opacity: 0;
+}
+
+@keyframes pop
+{
+    from
+    {
+        transform:scale(0);
+    }
+    to
+    {   opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animation-delay-25ms
+{
+    animation-delay: calc(0.5s + 25ms);
+}
+.animation-delay-50ms
+{
+    animation-delay: calc(0.5s + 50ms);
+}
+.animation-delay-75ms
+{
+    animation-delay: calc(0.5s + 75ms);
+}
+.animation-delay-100ms
+{
+    animation-delay: calc(0.5s + 100ms);
+}
+.animation-delay-125ms
+{
+    animation-delay: calc(0.5s + 125ms);
+}
+.from-top
+{
+    animation: from-top 0.5s ease forwards;
+}
+@keyframes from-top {
+    0%
+    {
+        opacity: 0;
+        transform: translateX(300px) scale(0.5);
+    }
+    70%
+    {
+        transform: translateX(0px) scale(0.5);
+    }
+    100%
+    {
+        transform: scale(1);
+    }
+}
