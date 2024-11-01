@@ -33,6 +33,8 @@ class RegisterForm extends SoftModel
 
     const PHONE_PATTERN = '/[9][9][8]\d{9}/';
 
+    public $firstname;
+    public $lastname;
     public $username;
     public $full_name;
 
@@ -83,8 +85,8 @@ class RegisterForm extends SoftModel
     {
         return [
 
-            [['full_name'], 'string', 'min' => 2, 'max' => 255],
-            [['full_name'], 'required', 'message' => t('Full name is required.')],
+            [['firstname', 'lastname'], 'string', 'min' => 2, 'max' => 255],
+            [['firstname'], 'required', 'message' => t('Firstname is required.')],
 
             [['password'], 'required', 'message' => t('Password is required.')],
             [['password_repeat'], 'required', 'message' => t('Repeat the password')],
@@ -135,9 +137,9 @@ class RegisterForm extends SoftModel
     public function scenarios(): array
     {
         $scenarios = parent::scenarios();
-        $scenarios[self::SCENARIO_PHONE] = ['phone', 'signature'];
+        $scenarios[self::SCENARIO_PHONE] = ['phone'/*, 'signature'*/];
         $scenarios[self::SCENARIO_VERIFY] = ['code', 'phone'];
-        $scenarios[self::SCENARIO_REGISTER] = ['full_name', 'password', 'password_repeat', 'code', 'phone', 'img', 'device_id', 'device_name', 'device_token','region_id', 'district_id', 'sex','born_date'];
+        $scenarios[self::SCENARIO_REGISTER] = ['firstname', 'lastname', 'password', 'password_repeat', 'code', 'phone', /*'img', 'device_id', 'device_name', 'device_token','region_id', 'district_id', 'sex','born_date'*/];
         return $scenarios;
     }
     // </editor-fold>
@@ -201,7 +203,7 @@ class RegisterForm extends SoftModel
             return 7777;
         }
 
-        return mt_rand(1000, 9999);
+        return 9999;
     }
 
     /**
@@ -346,12 +348,13 @@ class RegisterForm extends SoftModel
         ]);
         $user->username = $this->getClearPhone();
         $user->setPassword($this->password);
-        $user->full_name = strip_tags($this->full_name);
         $user->type_id = User::TYPE_ID_USER;
-        $user->sex = $this->sex;
-        $user->region_id = $this->region_id;
-        $user->district_id = $this->district_id;
-        $user->born_date = Yii::$app->formatter->asDate($this->born_date, 'php:Y-m-d');
+        $user->firstname = $this->firstname;
+        $user->lastname = $this->lastname;
+//        $user->full_name = strip_tags($this->full_name);
+//        $user->region_id = $this->region_id;
+//        $user->district_id = $this->district_id;
+//        $user->born_date = Yii::$app->formatter->asDate($this->born_date, 'php:Y-m-d');
         $user->status = User::STATUS_ACTIVE;
         $user->generateAuthKey();
 
@@ -371,24 +374,24 @@ class RegisterForm extends SoftModel
             return false;
         }
 
-        $userDevice = new UserDevice();
-        $userDevice->user_id = $user->id;
-        $userDevice->device_id = $this->device_id;
-        $userDevice->device_name = $this->device_name;
-        $userDevice->firebase_token = $this->device_token;
-        $userDevice->status = UserDevice::STATUS_ACTIVE;
-        $userDevice->generateToken();
-        if (!$userDevice->save()) {
-            $transaction->rollBack();
-            $this->addError('firstname', $userDevice->getFirstErrorMessage());
-            return false;
-        }
+//        $userDevice = new UserDevice();
+//        $userDevice->user_id = $user->id;
+//        $userDevice->device_id = $this->device_id;
+//        $userDevice->device_name = $this->device_name;
+//        $userDevice->firebase_token = $this->device_token;
+//        $userDevice->status = UserDevice::STATUS_ACTIVE;
+//        $userDevice->generateToken();
+//        if (!$userDevice->save()) {
+//            $transaction->rollBack();
+//            $this->addError('firstname', $userDevice->getFirstErrorMessage());
+//            return false;
+//        }
 
         $transaction->commit();
 
         return [
             'user' => $user,
-            'device' => $userDevice
+//            'device' => $userDevice
         ];
 
     }

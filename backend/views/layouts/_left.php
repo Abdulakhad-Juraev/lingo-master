@@ -1,9 +1,9 @@
 <?php
 
-/* @var $this \yii\web\View */
-
 use soft\widget\adminlte3\Menu;
+use yii\web\View;
 
+/* @var $this View */
 
 $menuItems = [
     ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index'], 'icon' => 'home',],

@@ -41,7 +41,7 @@ class LoginForm extends SoftModel
     public function rules()
     {
         return [
-            [['username', 'password', 'device_id', 'device_name'], 'required'],
+            [['username', 'password', /*'device_id',*/ /*'device_name'*/], 'required'],
             ['username', 'validatePhone'],
             ['password', 'validatePassword'],
             ['device_id', 'validateDevice'],

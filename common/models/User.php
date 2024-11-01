@@ -135,6 +135,7 @@ class User extends ActiveRecord implements IdentityInterface
     use UserTariffTrait;
     use ToeflResultTrait;
     use IeltsResultTrait;
+
     public const TYPE_ID_TEACHER = 1;
     public const TYPE_ID_STUDENT = 2;
     public const TYPE_ID_USER = 3;
@@ -158,6 +159,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public const EDUCATIONAL_TYPE_EVNING = 2;
     public const EDUCATIONAL_TYPE_OUTSIDE = 3;
+
     /**
      * @var mixed|null
      */
@@ -304,17 +306,18 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['username', 'trim'],
             ['username', 'unique', 'message' => t('Exists Username')],
-            [['username', 'full_name'], 'required'],
-            [['photo'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
-            [['username', 'full_name', 'passport_series', 'born_date', 'auth_key', 'simple_password'], 'string', 'max' => 255],
-            [['region_id', 'district_id', 'sex', 'passport_number', 'passport_type', 'faculty_id', 'department_id', 'group_id', 'direction_id', 'language_id', 'course_id', 'type_id', 'jshshir'], 'integer'],
+            [['username', /*'full_name'*/], 'required'],
+//            [['photo'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
+            [['username', /*'full_name'*/ /*'passport_series',*/ /*'born_date'*/ 'auth_key', /*'simple_password'*/], 'string', 'max' => 255],
+            [[/*'region_id',*//* 'district_id',*//* 'sex',*/ /*'passport_number',*/ /*'passport_type',*/ /*'faculty_id', 'department_id', 'group_id', 'direction_id', 'language_id', 'course_id',*/ 'type_id', /*'jshshir'*/], 'integer'],
+            [['firstname', 'lastname'], 'string', 'max' => 255],
             ['password', 'string', 'min' => 5],
             ['password', 'trim'],
-            ['is_accepted_student', 'boolean'],
+//            [/*'is_accepted_student',*/ 'boolean'],
 
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
-            ['sex', 'in', 'range' => [self::SEX_TYPE_MALE, self::SEX_TYPE_WOMAN]],
+//            ['sex', 'in', 'range' => [self::SEX_TYPE_MALE, self::SEX_TYPE_WOMAN]],
             ['password', 'required', 'on' => [self::SCENARIO_CREATE_BY_ADMIN],]
         ];
     }
@@ -389,7 +392,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function scenarios(): array
     {
         $scenarios = parent::scenarios();
-        $scenarios[self::SCENARIO_REGISTER] = ['firstname', 'lastname', 'username', 'password', 'img', 'region_id', 'district_id', 'sex', 'born_date'];
+        $scenarios[self::SCENARIO_REGISTER] = ['firstname', 'lastname', 'username', 'password', /*'img', 'region_id', 'district_id', 'sex', 'born_date'*/];
         $scenarios[self::SCENARIO_CREATE_BY_ADMIN] = ['educational_type', 'educational_form', 'esx', 'full_name', 'username', 'password', 'status', 'faculty_id', 'middle_name', 'region_id', 'district_id', 'department_id', 'group_id', 'direction_id', 'type_id'];
         $scenarios[self::SCENARIO_UPDATE_BY_ADMIN] = ['full_name', 'username', 'password', 'status'];
         $scenarios[self::SCENARIO_UPDATE] = ['full_name', 'photo', 'region_id', 'district_id', 'sex', 'born_date'];
@@ -517,7 +520,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function generateAuthKey()
     {
-        $this->auth_key = Yii::$app->security->generateRandomString();
+        $this->auth_key = Yii::$app->security->generateRandomString(28);
     }
 
     /**
@@ -835,6 +838,7 @@ class User extends ActiveRecord implements IdentityInterface
             }
         );
     }
+
     public function getLastUserTariff()
     {
         return $this->hasOne(UserTariff::class, ['user_id' => 'id'])

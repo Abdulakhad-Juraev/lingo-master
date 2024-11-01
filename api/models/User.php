@@ -37,7 +37,7 @@ class User extends \common\models\User
         return [
             'id',
             'username',
-            'full_name',
+//            'full_name',
             'auth_key',
             'type_id',
             'typeName' => function (User $model) {
