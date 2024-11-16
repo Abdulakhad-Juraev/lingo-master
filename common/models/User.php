@@ -392,7 +392,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function scenarios(): array
     {
         $scenarios = parent::scenarios();
-        $scenarios[self::SCENARIO_REGISTER] = ['firstname', 'lastname', 'username', 'password', /*'img', 'region_id', 'district_id', 'sex', 'born_date'*/];
+        $scenarios[self::SCENARIO_REGISTER] = ['username', 'password', /*'img', 'region_id', 'district_id', 'sex', 'born_date'*/];
         $scenarios[self::SCENARIO_CREATE_BY_ADMIN] = ['educational_type', 'educational_form', 'esx', 'full_name', 'username', 'password', 'status', 'faculty_id', 'middle_name', 'region_id', 'district_id', 'department_id', 'group_id', 'direction_id', 'type_id'];
         $scenarios[self::SCENARIO_UPDATE_BY_ADMIN] = ['full_name', 'username', 'password', 'status'];
         $scenarios[self::SCENARIO_UPDATE] = ['full_name', 'photo', 'region_id', 'district_id', 'sex', 'born_date'];

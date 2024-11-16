@@ -24,9 +24,7 @@ class RegisterController extends ApiBaseController
      */
     public function actionPhone(): array
     {
-        $model = new RegisterForm([
-            'scenario' => 'phone',
-        ]);
+        $model = new RegisterForm(['scenario' => 'phone']);
 
         if ($model->load(Yii::$app->request->post(), '') && $model->validate()) {
             if ($model->saveTempUser()) {

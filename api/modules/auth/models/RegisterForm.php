@@ -346,11 +346,13 @@ class RegisterForm extends SoftModel
         $user = new User([
             'scenario' => User::SCENARIO_REGISTER,
         ]);
-        $user->username = $this->getClearPhone();
+
+        $user->username = $this->username;
+        $user->phone = $this->getClearPhone();
         $user->setPassword($this->password);
         $user->type_id = User::TYPE_ID_USER;
-        $user->firstname = $this->firstname;
-        $user->lastname = $this->lastname;
+//        $user->firstname = $this->firstname;
+//        $user->lastname = $this->lastname;
 //        $user->full_name = strip_tags($this->full_name);
 //        $user->region_id = $this->region_id;
 //        $user->district_id = $this->district_id;
