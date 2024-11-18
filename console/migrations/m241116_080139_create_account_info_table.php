@@ -1,13 +1,14 @@
 <?php
 
-use yii\db\Migration;
+use soft\db\Migration;
+
 
 /**
  * Handles the creation of table `{{%account_info}}`.
  */
 class m241116_080139_create_account_info_table extends Migration
 {
-    public $tableName = 'account_info';
+    public $tableName = '{{%account_info}}';
 
     public $blameable = true;
 
@@ -19,17 +20,11 @@ class m241116_080139_create_account_info_table extends Migration
 
     public $foreignKeys = [
         [
-            'columns' => 'type_id',
+            'columns' => 'account_info_type_id',
             'refTable' => 'account_info_type',
             'refColumns' => 'id',
             'delete' => 'CASCADE'
         ],
-        [
-            'columns' => 'user_id',
-            'refTable' => 'oauth_user',
-            'refColumns' => 'id',
-            'delete' => 'CASCADE'
-        ]
     ];
 
     public function attributes()
@@ -37,8 +32,7 @@ class m241116_080139_create_account_info_table extends Migration
         return [
             'id' => $this->primaryKey(),
             'title' => $this->string(),
-            'type_id' => $this->integer(),
-            'user_id' => $this->integer()
+            'account_info_type_id' => $this->integer(),
         ];
     }
 }
